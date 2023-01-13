@@ -4,6 +4,7 @@ import AboutUs from './AboutUs'
 import CibilScore from './CibilScore'
 import EnquiryForm from './EnquiryForm'
 import fire from '../Firebase';
+import UserDashboard from './UserDashboard';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -143,6 +144,7 @@ const Home = () => {
         </div>
       </div>
       {!loggedUser && <AboutUs />}
+      {loggedUser && <UserDashboard />}
       {loggedUser && <EnquiryForm />}
     </div>
   )

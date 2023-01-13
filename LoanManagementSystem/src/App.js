@@ -10,9 +10,26 @@ import Signup from './components/Signup';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from './state';
+import EnquiryForm from './components/EnquiryForm';
+import SanctionLetter from './components/SanctionLetter';
+import AdminLogin from './components/AdminLogin';
+import CustomerDetails from './components/CustomerDetails';
+import AuthenticationService from './service/AuthenticationService';
+import ViewCustomers from './components/ViewCustomers';
+
+
+
 
 
 function App() {
+
+  const login = (username) => {
+    AuthenticationService.login(username)
+  }
+
+  const logout = () => {
+    AuthenticationService.logout()
+  }
 
   const [userLogged, setUserLogged] = useState(false);
   const dispatch = useDispatch();
@@ -52,8 +69,10 @@ function App() {
                   </a>
                   <ul className="nav">
                     <li className="scroll-to-section"><a href="#top" className="active">Home</a></li>
+                    <li className="scroll-to-section"><a href="#dashboard" >Dashboard</a></li>
                     <li className="scroll-to-section"><a href="#features">Features</a></li>
                     <li className="scroll-to-section"><a href="#about">About Us</a></li>
+                    <li className="scroll-to-section"><a href="/adminlogin">Admin Login</a></li>
                     {userLogged && <li className="scroll-to-section"><div className="main-blue-button"><a href="/" onClick={(e)=>logOutClick()}>Log Out</a></div></li>}
                   </ul>
                   <a className='menu-trigger'>
@@ -70,6 +89,11 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/LedgerList" element={<LedgerGrid />}></Route>
           <Route path="/Ledger" element={<SingleLoanLedger/>}></Route>
+          <Route path="/enquiryform" element={<EnquiryForm/>}></Route>
+          <Route path="/sanctionletter" element={<SanctionLetter/>}></Route>
+          <Route path="/adminlogin" element={<AdminLogin login={login}/>}></Route>
+          <Route path="/customerdetails" element={<CustomerDetails/>}></Route>
+          <Route path="/viewcustomers" element={<ViewCustomers/>}></Route>
         </Routes>
 
         <footer>
