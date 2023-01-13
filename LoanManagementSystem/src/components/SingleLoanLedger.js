@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import LedgerFilter from './LedgerFilter';
+import { FormGroup,Label,Input } from 'reactstrap'
 
 const SingleLoanLedger = (props) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const SingleLoanLedger = (props) => {
   const loanDetail = location.state.ledger;
   const [addModalShow, setAddModalShow] = useState(false);
   let filterTransaction = useSelector(state => state.transactionFilter);
-  
+
 
   const [transaction, setTransaction] = useState(
     {
@@ -66,7 +67,7 @@ const SingleLoanLedger = (props) => {
     dispatch(ledgerActions.getAllTransaction(loanDetail.ReferenceNo))
   }, [])
   return (
-    <Container>
+    <Container style={{ "marginTop": "120px", "marginBottom": "100px" }}>
       <Container>
         <Modal
           show={addModalShow}
@@ -97,7 +98,7 @@ const SingleLoanLedger = (props) => {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Transaction Type</Form.Label>
-                <Form.Select name="TransactionType" value={transaction.TransactionType}  onChange={(e)=>changeHandler(e)}>
+                <Form.Select name="TransactionType" value={transaction.TransactionType} onChange={(e) => changeHandler(e)}>
                   <option>Select Type</option>
                   <option value="Credit">Credit</option>
                   <option value="Debit">Debit</option>
@@ -105,7 +106,7 @@ const SingleLoanLedger = (props) => {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Transaction Description</Form.Label>
-                <Form.Control type="text" placeholder="Transaction Description" name="TransactionDescription" value={transaction.TransactionDescription} onChange={(e)=>changeHandler(e)}  />
+                <Form.Control type="text" placeholder="Transaction Description" name="TransactionDescription" value={transaction.TransactionDescription} onChange={(e) => changeHandler(e)} />
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -124,82 +125,95 @@ const SingleLoanLedger = (props) => {
               <h4 className="text-center">Reference No : #  {loanDetail.ReferenceNo}</h4>
             </Col>
           </Row>
-          <Row className="m-2">
-            <h4 className="center mt-4" style={{ paddingBottom: "10px" }}>Personal Details</h4 >
-
-            <Col>
-              <label className="col-md-4">First Name</label>
-              <input type="text" value={loanDetail.FirstName}></input>
+          <Row >
+            <h5 className="mt-4" >Personal Details</h5 >
+          </Row><br />
+          <Row>
+            <Col md={4}>
+              <FormGroup>
+                <Label>First Name</Label>
+                <Input type="text" value={loanDetail.FirstName} disabled="true"></Input>
+              </FormGroup>
             </Col>
-            <Col>
-              <label className="col-md-4">Last Name</label>
-              <input type="text" value={loanDetail.LastName}></input>
+            <Col md={4}>
+              <FormGroup>
+                <Label >Last Name</Label>
+                <Input type="text" value={loanDetail.LastName} disabled="true"></Input>
+              </FormGroup>
             </Col>
-            <Col>
-              <label className="col-md-4">Email</label>
-              <input type="text" value={loanDetail.Email}></input>
-            </Col>
-            <Col>
-              <label className="col-md-4">Mobile</label>
-              <input type="text" value={loanDetail.MobileNo}></input>
+            <Col md={4}>
+              <FormGroup>
+                <Label >Email</Label>
+                <Input type="text" value={loanDetail.Email} disabled="true"></Input>
+              </FormGroup>
             </Col>
           </Row>
-          <Row style={{ "paddingTop": "20px" }}>
-            <Col className="formfield">
-              <label className="col-md-4">Corresspondenece Address</label>
-              <textarea className="col-md-8" style={{ "height": "100px"}} type="text" value={loanDetail.CorresspondeneceAddress}/>
+          <Row >
+            <Col md={4}>
+              <FormGroup>
+                <Label >Mobile</Label>
+                <Input type="text" value={loanDetail.MobileNo} disabled="true"></Input>
+              </FormGroup>
             </Col>
-            <Col className="formfield">
-              <label className="col-md-4">Permanenet Address</label>
-              <textarea className="col-md-8" style={{ "height": "100px"}} type="text" value={loanDetail.PermanenetAddress}/>
+            <Col md={4}>
+              <FormGroup>
+                <Label >Corresspondance Address</Label>
+                <Input   type="text" value={loanDetail.CorrespondanceAddress} disabled="true" />
+              </FormGroup>
+            </Col>
+            <Col md={4}>
+              <FormGroup>
+                <Label >Permanenet Address</Label>
+                <Input   type="text" value={loanDetail.PermanentAddress} disabled="true" />
+              </FormGroup>
             </Col>
           </Row>
           <Row>
-            
+
             <h4 className="mt-4" style={{ paddingBottom: "10px", paddingTop: "10px" }}>Document Details</h4>
             <Col md={4}>
-              <label className="col-md-4">Adhar Card</label>
-              <input type="text" value={loanDetail.AdharCardNo} ></input>
+              <Label >Adhar Card</Label>
+              <Input type="text" value={loanDetail.AdharNo} disabled="true"></Input>
             </Col>
             <Col md={4}>
-              <label className="col-md-4">Pan Card</label>
-              <input type="text" value={loanDetail.PanCardNo}></input>
+              <Label >Pan Card</Label>
+              <Input type="text" value={loanDetail.PanNo} disabled="true"></Input>
             </Col>
           </Row>
           <Row>
             <h4 className="mt-4" style={{ paddingBottom: "10px", paddingTop: "10px" }}>Bank Details</h4>
             <Col md={4}>
-              <label className="col-md-4">Bank Name</label>
-              <input type="text" value={loanDetail.BankName}></input>
+              <Label >Bank Name</Label>
+              <Input type="text" value={loanDetail.BankName} disabled="true" ></Input>
             </Col>
             <Col md={4}>
-              <label className="col-md-4">IFSC Code</label>
-              <input type="text" value={loanDetail.IFSCCode} ></input>
+              <Label >IFSC Code</Label>
+              <Input type="text" value={loanDetail.IfscCode} disabled="true"></Input>
             </Col>
           </Row>
           <Row>
             <h4 className="mt-4" style={{ paddingBottom: "10px", paddingTop: "10px" }}>Loan Details</h4>
             <Col>
-              <label className="col-md-4">Loan Type</label>
-              <input type="text" value={loanDetail.LoanType}></input>
+              <Label >Loan Type</Label>
+              <Input type="text" value={loanDetail.LoanType} disabled="true"></Input>
             </Col>
             <Col>
-              <label className="col-md-4">Loan Amount</label>
-              <input type="text" value={loanDetail.LoanAmount}></input>
+              <Label >Loan Amount</Label>
+              <Input type="text" value={loanDetail.LoanAmount} disabled="true"></Input>
             </Col>
             <Col>
-              <label className="col-md-4">Interest Rate</label>
-              <input type="text" value={loanDetail.InterestRate}></input>
+              <Label>Interest Rate</Label>
+              <Input type="text" value={loanDetail.InterestRate} disabled="true"></Input>
             </Col>
           </Row>
-          <Row style={{ paddingTop: "20px" }}>
+          <Row >
             <Col md={4}>
-              <label className="col-md-4">Monthly EMI</label>
-              <input type="text" value={loanDetail.MonthlyPayment}></input>
+              <Label >Monthly EMI</Label>
+              <Input type="text" value={loanDetail.EMI} disabled="true"></Input>
             </Col>
             <Col md={4}>
-              <label className="col-md-4">Loan Period</label>
-              <input type="text" value={loanDetail.LoanPeriodInMonth}></input>
+              <Label >Loan Period</Label>
+              <Input type="text" value={loanDetail.LoanTenure} disabled="true"></Input>
             </Col>
           </Row>
         </Container>
@@ -207,7 +221,7 @@ const SingleLoanLedger = (props) => {
           <Button className="float-end" variant="primary" onClick={() => setAddModalShow(!addModalShow)}>Add Transaction</Button>
         </Container>
         <LedgerFilter />
-        <Container style={{ "paddingTop": "10px", marginBottom:"6rem" }}>
+        <Container style={{ "paddingTop": "10px", marginBottom: "6rem" }}>
           <Table bordered hover size="sm">
             <thead>
               <tr>
@@ -218,7 +232,7 @@ const SingleLoanLedger = (props) => {
                 <th>Transaction Description</th>
                 <th>Transaction Type</th>
                 <th>Transaction Amount</th>
-               
+
               </tr>
             </thead>
             <tbody>
@@ -231,14 +245,14 @@ const SingleLoanLedger = (props) => {
                   <td>{txn.TransactionDescription}</td>
                   <td>{txn.TransactionType}</td>
                   <td>₹ {txn.TransactionAmount}</td>
-                
+
                 </tr>
               ))}
             </tbody>
           </Table>
         </Container>
       </Container>
-    </Container>
+    </Container >
 
 
   )

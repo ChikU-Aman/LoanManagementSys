@@ -73,6 +73,7 @@ function App() {
                     <li className="scroll-to-section"><a href="#features">Features</a></li>
                     <li className="scroll-to-section"><a href="#about">About Us</a></li>
                     <li className="scroll-to-section"><a href="/adminlogin">Admin Login</a></li>
+                    <li className="scroll-to-section"><a href="/ledgergrid">Ledger</a></li>
                     {userLogged && <li className="scroll-to-section"><div className="main-blue-button"><a href="/" onClick={(e)=>logOutClick()}>Log Out</a></div></li>}
                   </ul>
                   <a className='menu-trigger'>
@@ -94,6 +95,7 @@ function App() {
           <Route path="/adminlogin" element={<AdminLogin login={login}/>}></Route>
           <Route path="/customerdetails" element={<CustomerDetails/>}></Route>
           <Route path="/viewcustomers" element={<ViewCustomers/>}></Route>
+          <Route path="/ledgergrid" element={<LedgerGrid/>}></Route>
         </Routes>
 
         <footer>

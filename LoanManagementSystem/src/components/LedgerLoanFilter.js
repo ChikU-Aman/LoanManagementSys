@@ -25,9 +25,10 @@ const LedgerLoanFilter = () => {
                 <Form.Label className="col-md-3">Loan Type</Form.Label>
                 <select onChange={(e) =>onChangeTransactionType(e)}>
                     <option value="All">All Type</option>
-                    <option value="Education Loan">Education Loan</option>
+                    <option value="Education Loan">Educational Loan</option>
                     <option value="Personal Loan">Personal Loan</option>
                     <option value="Car Loan">Car Loan</option>
+                    <option value="Car Loan">Home Loan</option>
                 </select>
             </Form.Group>
         </div>

@@ -37,8 +37,8 @@ const EnquiryForm = (values) => {
         RestFrequency: '',
         BankName: '',
         IfscCode: '',
-        BankAddress: ''
-
+        BankAddress: '',
+        CibilScore: Math.floor(Math.random() * (999 - 100 + 1) + 100).toString()
     });
 
     const sendEmail = async (event) => {
@@ -119,7 +119,7 @@ const EnquiryForm = (values) => {
                                         </div>
                                         <div className="col-lg-6">
                                             <fieldset>
-                                                <input type="text" name="Pincode" placeholder="Pincode" maxLength="6" value={user.Pincode} onChange={(e) => onInputChange(e)} autocomplete="on" required />
+                                                <input type="number" name="Pincode" placeholder="Pincode"  value={user.Pincode} onChange={(e) => onInputChange(e)} autocomplete="on" required />
                                             </fieldset>
                                         </div>
                                         <div className="col-lg-6">

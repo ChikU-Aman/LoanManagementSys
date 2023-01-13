@@ -2,7 +2,7 @@ import { store } from "../store";
 
 const getAllRecord = () => {
     return async () => {
-        const data = await fetch("http://localhost:5000/LoanDetails");
+        const data = await fetch("http://localhost:5000/EnquiryDetails");
         const parsedData = await data.json();
         store.dispatch({ type: 'GET_ALL_RECORD', payload: parsedData });
     }

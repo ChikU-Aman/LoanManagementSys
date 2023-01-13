@@ -59,9 +59,11 @@ const ViewCustomers = () => {
                 CibilScore: cust.CibilScore,
                 RestFrequency: cust.RestFrequency,
                 BankName: cust.BankName,
-                IFSCCode: cust.IFSCCode,
+                IfscCode: cust.IfscCode,
                 BankAddress: cust.BankAddress,
-                LoanStatus: status
+                LoanStatus: status,
+                ReferenceNo: cust.id,
+                EMI: cust.EMI
             }),
             'headers': { "Content-type": "application/json" }
 
@@ -241,7 +243,7 @@ const ViewCustomers = () => {
                         <FormGroup>
                             <Label for="cibilscore">CibilScore</Label>
                             <Input id="cibilscore" name="CibilScore" placeholder="CibilScore" type="text" value={cust.CibilScore}
-                                onChange={onChangeHandler}  />
+                                onChange={onChangeHandler} disabled="true"  />
                         </FormGroup>
                     </Col>
                     <Col md={4}>
@@ -275,6 +277,15 @@ const ViewCustomers = () => {
                         </FormGroup>
                     </Col>
                 </Row>
+                <Row>
+                <Col md={4}>
+                        <FormGroup>
+                            <Label for="emi">EMI (INR)</Label>
+                            <Input id="emi" name="EMI" placeholder="Equated Monthly Installment" type="text" value={cust.EMI}
+                                onChange={onChangeHandler} />
+                        </FormGroup>
+                    </Col>
+                </Row>
                 <hr style={{ color: '#33ccc5', backgroundColor: '#33ccc5', height: 3 }} />
                 <h4>Verification</h4>
                 <Row>
@@ -289,20 +300,20 @@ const ViewCustomers = () => {
                     </Col>
 
                     <Col md={12} className='col text-right'>
-                        <button style={{
+                        <Button style={{
                             "marginTop": "30px", "marginLeft": "10px", "height": "40px", "width": "100px",
                             "borderRadius": "14px", "backgroundColor": "#1e7773", "color": "white", "borderColor": "white"
-                        }} type="submit" id="Approved" className="main-button" disabled={disable} onClick={onClickApprove}>Approve</button>
+                        }}  id="Approved" className="main-button" disabled={disable} onClick={onClickApprove}>Approve</Button>
 
-                        <button style={{
+                        <Button style={{
                             "marginTop": "30px", "marginLeft": "10px", "height": "40px", "width": "100px",
                             "borderRadius": "14px", "backgroundColor": "#269994", "color": "white", "borderColor": "white"
-                        }} type="submit" id="Disapproved" className="main-button" disabled={disable} onClick={onClickApprove}>Disapprove</button>
+                        }} id="Disapproved" className="main-button" disabled={disable} onClick={onClickApprove}>Disapprove</Button>
 
-                        <button style={{
+                        <Button style={{
                             "marginTop": "30px", "marginLeft": "10px", "height": "40px", "width": "100px",
                             "borderRadius": "14px", "backgroundColor": "#99e6e2", "color": "white", "borderColor": "white"
-                        }} type="submit" id="form-submit" className="main-button" onClick={backToDetails}>Back</button>
+                        }}  id="form-submit" className="main-button" onClick={backToDetails}>Back</Button>
                     </Col>
                 </Row>
 
